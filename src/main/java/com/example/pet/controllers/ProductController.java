@@ -1,12 +1,14 @@
 package com.example.pet.controllers;
 
 import com.example.pet.models.Product;
+import com.example.pet.repositories.ProductRepository;
 import com.example.pet.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.Base64;
@@ -31,13 +33,17 @@ public class ProductController {
     }
 
     @GetMapping("product/create")
-    public String createProduct(@ModelAttribute )
+    public String createProductGet() {
+        return "product-create";
+
+    }
 
     @PostMapping("product/create")
-    public String createProduct(
-            @ModelAttribute Product product) throws IOException {
+    public String createProductPost(
+            @ModelAttribute Product product, RedirectAttributes redirectAttributes) throws IOException {
         productService.saveProduct(product);
-        return "redirect:/product/{product.id}";
+        redirectAttributes.addAttribute("id", product.getId());
+        return "redirect:/product/{id}";
 
     }
 
