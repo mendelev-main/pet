@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${product.title + ' - Карточка продукта'}">Карточка продукта</title>
+    <style>
+        .product-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .product-image {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .product-details {
+            margin-bottom: 30px;
+        }
+        .product-detail {
+            margin-bottom: 10px;
+        }
+        .delete-btn {
+            background-color: #ff4444;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #cc0000;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="product-container">
+    <h1 th:text="${product.title}">Продукт</h1>
+
+
+    <hr/>
+
+    <!-- Детали продукта -->
+    <div class="product-details">
+        <div class="product-detail">
+            <b>Название товара: </b>
+            <span th:text="${product.title}">Название</span>
+        </div>
+
+        <div class="product-detail">
+            <b>Описание продукта: </b>
+            <span th:text="${product.description}">Описание</span>
+        </div>
+
+        <div class="product-detail">
+            <b>Цена продукта: </b>
+            <span th:text="${product.price}">Цена</span>
+        </div>
+
+        <div class="product-detail">
+            <b>Себестоимость продукта: </b>
+            <span th:text="${product.costPrice}">Себестоимость</span>
+        </div>
+
+        <div class="product-detail">
+            <b>Количество продукта: </b>
+            <span th:text="${product.quantity}">Количество</span>
+        </div>
+
+        <div class="product-detail">
+            <b>Составной: </b>
+            <span th:text="${product.composite} ? 'Да' : 'Нет'">Составной</span>
+        </div>
+    </div>
+
+    <hr/>
+
+    <!-- Форма удаления -->
+    <form th:action="@{/product/delete/{id}(id=${product.id})}" method="post">
+        <button type="submit" class="delete-btn">Удалить продукт</button>
+    </form>
+</div>
+</body>
+</html>

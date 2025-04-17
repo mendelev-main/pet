@@ -1,0 +1,65 @@
+### Стандартный gitignore для Spring Boot ###
+# Игнорируем сгенерированные файлы
+*.class
+*.log
+*.ctxt
+
+# Игнорируем папки сборки
+.mvn/
+target/
+bin/
+build/
+out/
+
+# Игнорируем файлы IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.vscode/
+*.swp
+*.swo
+
+# Игнорируем системные файлы
+.DS_Store
+Thumbs.db
+
+### Файлы окружения ###
+# Игнорируем файлы конфигурации с чувствительными данными
+application*.properties
+application*.yml
+!application-example.properties
+
+# Игнорируем локальные настройки
+*.keystore
+*.jks
+
+### Файлы базы данных ###
+# Игнорируем локальные файлы БД
+*.db
+*.sqlite
+/h2/
+
+### Файлы загрузок ###
+# Игнорируем загруженные файлы (если хранятся локально)
+uploads/
+temp/
+
+### Логи ###
+logs/
+*.log
+*.log.*
+
+### Node.js/npm ###
+node_modules/
+npm-debug.log*
+
+### Прочее ###
+# Игнорируем файлы зависимостей (если используются)
+dependency-reduced-pom.xml
+
+# Игнорируем файлы профилей Maven
+*.versionsBackup
